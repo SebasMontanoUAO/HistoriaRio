@@ -1,4 +1,4 @@
-using Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class LecturaPAbiertas : MonoBehaviour
 {
-    // Lista de preguntas abiertas
     List<PreguntaAbierta> listaPreguntasA;
     public TextMeshProUGUI textoPregunta;
     public TMP_InputField inputRespuesta;
@@ -34,7 +33,7 @@ public class LecturaPAbiertas : MonoBehaviour
                 {
                     string[] lineaPartida = lineaLeida.Split('-');
 
-                    if (lineaPartida.Length >= 2) // ahora solo pregunta y respuesta
+                    if (lineaPartida.Length >= 2)
                     {
                         string preguntaAbierta = lineaPartida[0];
                         string respuesta = lineaPartida[1];
@@ -44,11 +43,11 @@ public class LecturaPAbiertas : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning("L�nea malformada: " + lineaLeida);
+                        Debug.LogWarning("Línea malformada: " + lineaLeida);
                     }
                 }
 
-                Debug.Log("Tama�o de la lista de preguntas abiertas: " + listaPreguntasA.Count);
+                Debug.Log("Tamaño de la lista de preguntas abiertas: " + listaPreguntasA.Count);
                 indicadorPreguntaA = listaPreguntasA.Count;
             }
         }
@@ -79,12 +78,27 @@ public class LecturaPAbiertas : MonoBehaviour
         }
     }
 
-    public void validarRespuesta(string respuestaUsuario)
+    public void InvalidarRespuesta()
     {
-        bool esCorrecta = (respuestaUsuario == respuestaA);
+        ResultadoJuego.RegistrarRespuesta(false); // ← Siempre false
+        Debug.Log("Respuesta invalidada - Incorrecta");
+        FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+    }
 
-        ResultadoJuego.RegistrarRespuesta(esCorrecta);
-        Debug.Log("Respuesta del jugador: " + (esCorrecta ? "Correcta" : "Incorrecta"));
+    public void ValidarRespuesta()
+    {
+        ResultadoJuego.RegistrarRespuesta(true); // ← Siempre true
+        Debug.Log("Respuesta validada - Correcta");
+        FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+    }
+
+    public void VerificarRespuesta()
+    {
+        string respuestaUsuario = inputRespuesta.text.Trim();
+        bool esCorrecta = (respuestaUsuario.Equals(respuestaA, StringComparison.OrdinalIgnoreCase));
+
+        ResultadoJuego.RegistrarRespuesta(esCorrecta); // ← true o false según comparación
+        Debug.Log("Respuesta verificada: " + (esCorrecta ? "Correcta" : "Incorrecta"));
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
     }
 }
