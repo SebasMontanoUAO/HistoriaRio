@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plataforma
   - ZonaMuerta
+  - Jugador
   layers:
   - Default
   - TransparentFX
