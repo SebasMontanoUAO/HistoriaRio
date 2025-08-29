@@ -9,7 +9,7 @@ public class LecturaPFV : MonoBehaviour
 {
     List<PreguntasFV> listaPreguntasFV;
     public TextMeshProUGUI textoPregunta;
-    public GameObject panelCorrecto, panelIncorrecto, panelTerminarFV;
+    public GameObject panelTerminarFV;
     public int indicadorPreguntaFV;
     bool respuestaCorrecta;
 
@@ -17,6 +17,8 @@ public class LecturaPFV : MonoBehaviour
     {
         listaPreguntasFV = new List<PreguntasFV>();
         lecturaPreguntasFV();
+
+        FindObjectOfType<ControllerAllS>().AvisarLecturaLista();
     }
 
     public void lecturaPreguntasFV()
@@ -72,20 +74,18 @@ public class LecturaPFV : MonoBehaviour
         else
         {
             panelTerminarFV.SetActive(true);
+
+            ResultadoJuego.MostrarResultadoFinal();
         }
     }
 
     public void validarRespuesta(bool respuestaUsuario)
     {
-        if (respuestaUsuario == respuestaCorrecta)
-        {
-            panelCorrecto.SetActive(true);
-            panelIncorrecto.SetActive(false);
-        }
-        else
-        {
-            panelCorrecto.SetActive(false);
-            panelIncorrecto.SetActive(true);
-        }
+        bool esCorrecta = (respuestaUsuario == respuestaCorrecta);
+
+        ResultadoJuego.RegistrarRespuesta(esCorrecta);
+
+        Debug.Log("Respuesta del jugador: " + (esCorrecta ? "Correcta" : "Incorrecta"));
+        FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
     }
 }

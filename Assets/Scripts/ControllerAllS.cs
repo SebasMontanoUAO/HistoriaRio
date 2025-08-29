@@ -11,8 +11,10 @@ public class ControllerAllS : MonoBehaviour
     GameObject controlSelected;
     public GameObject panelAbiertas;
     public GameObject panelMultiples;
-    public GameObject panelFV;
     public GameObject panelFinal;
+    public GameObject panelFV;
+    private int lecturasListas = 0;   // contador de scripts cargados
+    private int totalLecturas = 3;
 
     void Start()
     {
@@ -21,7 +23,17 @@ public class ControllerAllS : MonoBehaviour
     void Update()
     {
     }
+    public void AvisarLecturaLista()
+    {
+        lecturasListas++;
 
+        // Si los 3 ya cargaron, arrancamos el juego
+        if (lecturasListas == totalLecturas)
+        {
+            Debug.Log("Todas las lecturas listas, iniciando juego...");
+            SelectQuestionFaciles();
+        }
+    }
     public void SelectQuestionFaciles()
     {
         // Verificar si todavía hay controladores disponibles
@@ -43,7 +55,6 @@ public class ControllerAllS : MonoBehaviour
                 }
                 else
                 {
-                    controlMulti.panelTerminarM.SetActive(true);
                     // Si no hay más preguntas múltiples, eliminar el controlador
                     listaControllers.Remove(controlSelected);
                 }
@@ -60,7 +71,6 @@ public class ControllerAllS : MonoBehaviour
                 }
                 else
                 {
-                    controlFV.panelTerminarFV.SetActive(true);
                     // Si no hay más preguntas FV, eliminar el controlador
                     listaControllers.Remove(controlSelected);
                 }
@@ -77,7 +87,6 @@ public class ControllerAllS : MonoBehaviour
                 }
                 else
                 {
-                    controlAbiertas.panelTerminarA.SetActive(true);
                     // Si no hay más preguntas abiertas, eliminar el controlador
                     listaControllers.Remove(controlSelected);
                 }

@@ -13,7 +13,8 @@ public class LecturaPMultiples : MonoBehaviour
     public TextMeshProUGUI textoOp2;
     public TextMeshProUGUI textoOp3;
     public TextMeshProUGUI textoOp4;
-    public GameObject panelCorrecto, panelIncorrecto, panelTerminarM;
+    public GameObject panelTerminarM;
+
     public int indicadorPreguntaM;
     string respuestaCorrecta;
 
@@ -21,6 +22,7 @@ public class LecturaPMultiples : MonoBehaviour
     {
         listaPreguntasM = new List<PreguntasMultiples>();
         lecturaPreguntasM();
+        FindObjectOfType<ControllerAllS>().AvisarLecturaLista();
     }
 
     public void lecturaPreguntasM()
@@ -89,15 +91,11 @@ public class LecturaPMultiples : MonoBehaviour
 
     public void validarRespuesta(string respuestaUsuario)
     {
-        if (respuestaUsuario == respuestaCorrecta)
-        {
-            panelCorrecto.SetActive(true);
-            panelIncorrecto.SetActive(false);
-        }
-        else
-        {
-            panelCorrecto.SetActive(false);
-            panelIncorrecto.SetActive(true);
-        }
+        bool esCorrecta = (respuestaUsuario == respuestaCorrecta);
+
+        ResultadoJuego.RegistrarRespuesta(esCorrecta);
+
+        Debug.Log("Respuesta del jugador: " + (esCorrecta ? "Correcta" : "Incorrecta"));
+        FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
     }
 }
