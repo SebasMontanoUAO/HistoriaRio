@@ -97,6 +97,7 @@ public class ControllerAllS : MonoBehaviour
             panelFinal.SetActive(true);
             Debug.Log("Todas las preguntas de todos los tipos se han terminado.");
         }
+        FindObjectOfType<Timer>().ReiniciarTiempo();
     }
 
 }

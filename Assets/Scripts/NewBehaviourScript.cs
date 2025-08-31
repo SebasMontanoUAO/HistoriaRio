@@ -1,77 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Timer : MonoBehaviour
 {
-    public TextMeshProUGUI min;
-    public TextMeshProUGUI seg;
-    public TextMeshProUGUI milSeg;
+    [Header("Configuración del tiempo")]
+    public float tiempoLimite = 30f; // en segundos
+    private float tiempoRestante;
+    private bool contando = false;
 
-    private float startTime;
-    private float stopTime;
-    private float timerTime;
-    private bool isRunning=false;
+    [Header("Referencias UI (TMP)")]
+    public TextMeshProUGUI textoMinutos;
+    public TextMeshProUGUI textoSegundos;
+    public TextMeshProUGUI textoMilisegundos;
 
-    private void Awake()
+    private void OnEnable()
     {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        ReiniciarTiempo();
     }
 
-    public void TimerStart() {
-        if (!isRunning) {
-            Debug.Log("START");
-            isRunning = true;
-            startTime = Time.time;//guarda el tiempo en la variable startTime 
+    private void Update()
+    {
+        if (!contando) return;
+
+        tiempoRestante -= Time.deltaTime;
+
+        if (tiempoRestante <= 0f)
+        {
+            tiempoRestante = 0f;
+            contando = false;
+            Debug.Log("Tiempo agotado - Se debe marcar incorrecta la pregunta");
+
+            // Aquí marcas incorrecta la respuesta automáticamente:
+            if (GameObject.FindObjectOfType<LecturaPFV>()?.gameObject.activeSelf == true)
+            {
+                GameObject.FindObjectOfType<LecturaPFV>().validarRespuesta(false);
+            }
+            else if (GameObject.FindObjectOfType<LecturaPMultiples>()?.gameObject.activeSelf == true)
+            {
+                GameObject.FindObjectOfType<LecturaPMultiples>().validarRespuesta("");
+            }
+            else if (GameObject.FindObjectOfType<LecturaPAbiertas>()?.gameObject.activeSelf == true)
+            {
+                GameObject.FindObjectOfType<LecturaPAbiertas>().InvalidarRespuesta();
+            }
         }
+
+        ActualizarUI();
     }
 
-    public void TimerStop() {
-        print("STOP");
-        isRunning = false;
-        stopTime = timerTime;
-        Debug.Log("Mostrar en donde quedé "+stopTime.ToString());
-        //Cuando pasan los 30 segundos, mayores a 30, suena un audio
-        //if (stopTime >= 30)
-        //{
-        //    respuestaAudio.clip = stop;
-        //    respuestaAudio.Play();
-        //}
-
-       
-    }
-
-    public void TimerReset() {
-        print("RESET");
-        stopTime = 0;
-        isRunning = false;
-        min.text = seg.text = milSeg.text = "00";
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void ReiniciarTiempo()
     {
-        timerTime = stopTime + (Time.time - startTime);//Iniciar tiempo
-        int minutesInt = (int)timerTime / 60;//Calculando los minutos
-        int secondsInt = (int)timerTime % 60;//Calculando los segundos
-        int milSecondsInt = (int)(Mathf.Floor((timerTime - (secondsInt + minutesInt*60))*100));//Calculando los milisegundos
-
-        if (isRunning) {
-            min.text = (minutesInt < 10) ? "0" + minutesInt : minutesInt.ToString();
-            seg.text = (secondsInt < 10) ? "0" + secondsInt : secondsInt.ToString();
-            milSeg.text = (milSecondsInt < 10) ? "0" + milSecondsInt : milSecondsInt.ToString();
-        }
+        tiempoRestante = tiempoLimite;
+        contando = true;
+        ActualizarUI();
+        Debug.Log("Temporizador reiniciado a " + tiempoLimite + " segundos");
     }
 
-    private void FixedUpdate()
+    private void ActualizarUI()
     {
-        
+        int minutos = Mathf.FloorToInt(tiempoRestante / 60f);
+        int segundos = Mathf.FloorToInt(tiempoRestante % 60f);
+        int milisegundos = Mathf.FloorToInt((tiempoRestante * 100f) % 100f);
+
+        if (textoMinutos != null) textoMinutos.text = minutos.ToString("00");
+        if (textoSegundos != null) textoSegundos.text = segundos.ToString("00");
+        if (textoMilisegundos != null) textoMilisegundos.text = milisegundos.ToString("00");
     }
 }
-

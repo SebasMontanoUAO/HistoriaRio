@@ -25,7 +25,7 @@ public class LecturaPAbiertas : MonoBehaviour
     {
         try
         {
-            string path = Path.Combine(Application.dataPath, "Scenes/RecursosTXT/FALSO_VERDADERO_2024.txt");
+            string path = Path.Combine(Application.dataPath, "Scenes/RecursosTXT/ABIERTAS_2024.txt");
             using (StreamReader sr = new StreamReader(path))
             {
                 string lineaLeida;
