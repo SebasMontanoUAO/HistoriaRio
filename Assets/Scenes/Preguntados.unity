@@ -2930,10 +2930,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2143751617}
         m_TargetAssemblyTypeName: LecturaPMultiples, Assembly-CSharp
         m_MethodName: validarRespuesta
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 152543812}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3678,10 +3678,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2143751617}
         m_TargetAssemblyTypeName: LecturaPMultiples, Assembly-CSharp
         m_MethodName: validarRespuesta
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 152086200}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4706,7 +4706,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1344053035
 MonoBehaviour:
@@ -4968,10 +4968,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2143751617}
         m_TargetAssemblyTypeName: LecturaPMultiples, Assembly-CSharp
         m_MethodName: validarRespuesta
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 915475607}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5184,7 +5184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027577e2183c82243baaefc84510571e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoLimite: 10
+  tiempoLimite: 15
+  ControllerFV: {fileID: 137880619}
+  ControllerAbiertas: {fileID: 2065402562}
+  ControllerMultiples: {fileID: 2143751616}
   textoMinutos: {fileID: 1239140317}
   textoSegundos: {fileID: 1936038303}
   textoMilisegundos: {fileID: 446130714}
@@ -5682,10 +5685,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2143751617}
         m_TargetAssemblyTypeName: LecturaPMultiples, Assembly-CSharp
         m_MethodName: validarRespuesta
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 162927879}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -4,9 +4,14 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [Header("Configuración del tiempo")]
-    public float tiempoLimite = 30f; // en segundos
+    public float tiempoLimite = 60f; // en segundos
     private float tiempoRestante;
     private bool contando = false;
+
+    [Header("Referencias a los paneles")]
+    public GameObject ControllerFV;
+    public GameObject ControllerAbiertas;
+    public GameObject ControllerMultiples;
 
     [Header("Referencias UI (TMP)")]
     public TextMeshProUGUI textoMinutos;
@@ -31,17 +36,18 @@ public class Timer : MonoBehaviour
             Debug.Log("Tiempo agotado - Se debe marcar incorrecta la pregunta");
 
             // Aquí marcas incorrecta la respuesta automáticamente:
-            if (GameObject.FindObjectOfType<LecturaPFV>()?.gameObject.activeSelf == true)
+
+            if (ControllerFV != null && ControllerFV.activeSelf)
             {
-                GameObject.FindObjectOfType<LecturaPFV>().validarRespuesta(false);
+                ControllerFV.GetComponent<LecturaPFV>().InvalidarRespuesta();
             }
-            else if (GameObject.FindObjectOfType<LecturaPMultiples>()?.gameObject.activeSelf == true)
+            else if (ControllerAbiertas != null && ControllerAbiertas.activeSelf)
             {
-                GameObject.FindObjectOfType<LecturaPMultiples>().validarRespuesta("");
+                ControllerAbiertas.GetComponent<LecturaPAbiertas>().InvalidarRespuesta();
             }
-            else if (GameObject.FindObjectOfType<LecturaPAbiertas>()?.gameObject.activeSelf == true)
+            else if (ControllerMultiples != null && ControllerMultiples.activeSelf)
             {
-                GameObject.FindObjectOfType<LecturaPAbiertas>().InvalidarRespuesta();
+                ControllerMultiples.GetComponent<LecturaPMultiples>().InvalidarRespuesta();
             }
         }
 

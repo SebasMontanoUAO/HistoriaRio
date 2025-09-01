@@ -1,4 +1,4 @@
-using Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,11 +51,11 @@ public class LecturaPMultiples : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning("L�nea malformada: " + lineaLeida);
+                        Debug.LogWarning("Línea malformada: " + lineaLeida);
                     }
                 }
 
-                Debug.Log("Preguntas m�ltiples cargadas: " + listaPreguntasM.Count);
+                Debug.Log("Preguntas múltiples cargadas: " + listaPreguntasM.Count);
                 indicadorPreguntaM = listaPreguntasM.Count;
             }
         }
@@ -88,13 +88,21 @@ public class LecturaPMultiples : MonoBehaviour
             panelTerminarM.SetActive(true);
         }
     }
-
-    public void validarRespuesta(string respuestaUsuario)
+    public void InvalidarRespuesta()
     {
-        bool esCorrecta = (respuestaUsuario == respuestaCorrecta);
+        ResultadoJuego.RegistrarRespuesta(false); // ← Siempre false
+        Debug.Log("Respuesta invalidada - Incorrecta");
+        FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+    }
+    public void validarRespuesta(TextMeshProUGUI opcionLabel)
+    {
+        string respuestaUsuario = opcionLabel.text;
 
+        Debug.Log("Respuesta del usuario: '" + respuestaUsuario + "'");
+        Debug.Log("Respuesta correcta: '" + respuestaCorrecta + "'");
+
+        bool esCorrecta = respuestaUsuario == respuestaCorrecta;
         ResultadoJuego.RegistrarRespuesta(esCorrecta);
-
         Debug.Log("Respuesta del jugador: " + (esCorrecta ? "Correcta" : "Incorrecta"));
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
     }

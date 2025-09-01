@@ -1,4 +1,4 @@
-using Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,7 +43,7 @@ public class LecturaPFV : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning("L�nea malformada: " + lineaLeida);
+                        Debug.LogWarning("Línea malformada: " + lineaLeida);
                     }
                 }
 
@@ -78,14 +78,26 @@ public class LecturaPFV : MonoBehaviour
             ResultadoJuego.MostrarResultadoFinal();
         }
     }
-
+        public void InvalidarRespuesta()
+    {
+        ResultadoJuego.RegistrarRespuesta(false); // ← Siempre false
+        Debug.Log("Tiempo fuera Incorrecta");
+        FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+    }
     public void validarRespuesta(bool respuestaUsuario)
     {
+        Debug.Log("=== VALIDAR RESPUESTA LLAMADO ===");
+        Debug.Log("Respuesta del usuario: " + respuestaUsuario);
+        Debug.Log("Respuesta correcta: " + respuestaCorrecta);
+        Debug.Log("Tipo de respuestaUsuario: " + respuestaUsuario.GetType());
+        Debug.Log("Tipo de respuestaCorrecta: " + respuestaCorrecta.GetType());
+
         bool esCorrecta = (respuestaUsuario == respuestaCorrecta);
+        Debug.Log("¿Son iguales? " + esCorrecta);
+        Debug.Log("Comparación directa: " + respuestaUsuario + " == " + respuestaCorrecta + " = " + esCorrecta);
 
         ResultadoJuego.RegistrarRespuesta(esCorrecta);
-
-        Debug.Log("Respuesta del jugador: " + (esCorrecta ? "Correcta" : "Incorrecta"));
+        Debug.Log("Resultado final registrado: " + (esCorrecta ? "Correcta" : "Incorrecta"));
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
     }
 }

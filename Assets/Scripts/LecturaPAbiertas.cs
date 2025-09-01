@@ -94,7 +94,7 @@ public class LecturaPAbiertas : MonoBehaviour
 
     public void VerificarRespuesta()
     {
-        string respuestaUsuario = inputRespuesta.text.Trim();
+        string respuestaUsuario = inputRespuesta.text;
         bool esCorrecta = (respuestaUsuario.Equals(respuestaA, StringComparison.OrdinalIgnoreCase));
 
         ResultadoJuego.RegistrarRespuesta(esCorrecta); // ← true o false según comparación
