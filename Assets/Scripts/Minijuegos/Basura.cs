@@ -4,12 +4,14 @@ using UnityEngine;
 public class Basura : MonoBehaviour
 {
     [SerializeField]
-    private float velocidad = 7f;
+    private float velocidadMax = 10f;
+
+    private float velocidad;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        velocidad = Random.Range(3, velocidadMax);
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class Basura : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Plataforma"))
         {
-            Debug.Log("Suma 1 punto!");
+            ControllerMinijuegoPlataforma.InstanciaControladorMinijuego.SumarPunto();
             Destroy(this.gameObject);
         }
 
