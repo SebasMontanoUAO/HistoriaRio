@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb11bf010293e244bea8df71282d1cc, type: 3}
+  m_Name: Preguntados
+  m_EditorClassIdentifier: 
+  conversationLines:
+  - speakerName: Ema
+    dialogueLine: "\xA1Hola, h\xE9roe! Justo llegas cuando m\xE1s se te necesita."
+  - speakerName: Heroe
+    dialogueLine: "\xBFSucede algo malo?"
+  - speakerName: Ema
+    dialogueLine: "Necesitamos saber cu\xE1nto conoces del rio. \xBFPodr\xEDas responder
+      algunas preguntas sobre el r\xEDo Mel\xE9ndez y nuestro entorno?"
+  - speakerName: Heroe
+    dialogueLine: "Claro, har\xE9 lo mejor que pueda. Adelante con las preguntas."
+  - speakerName: Ema
+    dialogueLine: "Perfecto. Con tu ayuda, podremos ense\xF1ar a m\xE1s personas
+      sobre la importancia de cuidar nuestros recursos."

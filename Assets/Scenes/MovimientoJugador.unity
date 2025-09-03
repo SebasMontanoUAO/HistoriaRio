@@ -1476,8 +1476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myConversation: {fileID: 0}
-  playerTag: Player
+  myConversation: {fileID: 11400000, guid: dace94ba61cdf864aa95ce8813d6fb05, type: 2}
+  playerTag: Jugador
   dialogoManager: {fileID: 234054559}
 --- !u!1 &1772015571
 GameObject:
@@ -1676,8 +1676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myConversation: {fileID: 0}
-  playerTag: Player
+  myConversation: {fileID: 11400000, guid: b60d7a444b5a5f54d86ea88dc6f2f786, type: 2}
+  playerTag: Jugador
   dialogoManager: {fileID: 234054559}
 --- !u!1 &2107423126
 GameObject:
@@ -1876,8 +1876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myConversation: {fileID: 0}
-  playerTag: Player
+  myConversation: {fileID: 11400000, guid: e9c524f233671424398b0102b86f2996, type: 2}
+  playerTag: Jugador
   dialogoManager: {fileID: 234054559}
 --- !u!1 &2121131196
 GameObject:
