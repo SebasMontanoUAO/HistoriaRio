@@ -14,8 +14,21 @@ public class DialogoManager : MonoBehaviour
 
     void Start()
     {
+        // Canvas y textos inician desactivados SIEMPRE
         if (dialoguePanel != null)
+        {
             dialoguePanel.SetActive(false);
+        }
+
+        // Limpiar textos al inicio
+        if (nameText != null)
+        {
+            nameText.text = "";
+        }
+        if (lineText != null)
+        {
+            lineText.text = "";
+        }
     }
 
     public void StartConversation(ScriptableObject conversation)

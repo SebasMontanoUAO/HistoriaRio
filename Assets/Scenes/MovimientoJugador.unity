@@ -366,9 +366,6 @@ MonoBehaviour:
   nameText: {fileID: 148898301}
   lineText: {fileID: 626931741}
   dialoguePanel: {fileID: 1487483181}
-  targetSprite: {fileID: 565244274}
-  playerTag: Player
-  conversationAsset: {fileID: 11400000, guid: d4e480929b16c844a8192e877d2d09d1, type: 2}
 --- !u!4 &234054560
 Transform:
   m_ObjectHideFlags: 0
@@ -377,8 +374,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234054558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4442291, y: 0.3985172, z: 1.6383252}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.4442291, y: 0.3985138, z: 1.6383251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -397,6 +394,7 @@ GameObject:
   - component: {fileID: 565244278}
   - component: {fileID: 565244277}
   - component: {fileID: 565244276}
+  - component: {fileID: 565244281}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -413,7 +411,7 @@ Transform:
   m_GameObject: {fileID: 565244274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.62, y: 0.97, z: -0.038656197}
+  m_LocalPosition: {x: -1.45, y: 4.61, z: -0.038656197}
   m_LocalScale: {x: 1.5032669, y: 1.527466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -568,6 +566,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &565244281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565244274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myConversation: {fileID: 11400000, guid: f61a99de10e1aee48abb5ac31c9c4b1b, type: 2}
+  playerTag: Jugador
+  dialogoManager: {fileID: 234054559}
 --- !u!1 &626931739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1292,7 @@ GameObject:
   - component: {fileID: 1646702939}
   - component: {fileID: 1646702938}
   - component: {fileID: 1646702937}
+  - component: {fileID: 1646702941}
   m_Layer: 0
   m_Name: NPC (3)
   m_TagString: Untagged
@@ -1295,7 +1309,7 @@ Transform:
   m_GameObject: {fileID: 1646702935}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.58, y: 2.77, z: -0.038656197}
+  m_LocalPosition: {x: 10.89, y: 4.43, z: -0.038656197}
   m_LocalScale: {x: 1.5032669, y: 1.527466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1450,6 +1464,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1646702941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646702935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myConversation: {fileID: 0}
+  playerTag: Player
+  dialogoManager: {fileID: 234054559}
 --- !u!1 &1772015571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1492,7 @@ GameObject:
   - component: {fileID: 1772015575}
   - component: {fileID: 1772015574}
   - component: {fileID: 1772015573}
+  - component: {fileID: 1772015577}
   m_Layer: 0
   m_Name: NPC (2)
   m_TagString: Untagged
@@ -1479,7 +1509,7 @@ Transform:
   m_GameObject: {fileID: 1772015571}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.56, y: -4.62, z: -0.038656197}
+  m_LocalPosition: {x: -10.72, y: 4.58, z: -0.038656197}
   m_LocalScale: {x: 1.5032669, y: 1.527466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1634,6 +1664,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1772015577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772015571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myConversation: {fileID: 0}
+  playerTag: Player
+  dialogoManager: {fileID: 234054559}
 --- !u!1 &2107423126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1692,7 @@ GameObject:
   - component: {fileID: 2107423130}
   - component: {fileID: 2107423129}
   - component: {fileID: 2107423128}
+  - component: {fileID: 2107423132}
   m_Layer: 0
   m_Name: NPC (4)
   m_TagString: Untagged
@@ -1663,7 +1709,7 @@ Transform:
   m_GameObject: {fileID: 2107423126}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.53, y: -2.62, z: -0.038656197}
+  m_LocalPosition: {x: 19.19, y: 4.5, z: -0.038656197}
   m_LocalScale: {x: 1.5032669, y: 1.527466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1818,6 +1864,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2107423132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107423126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f14b28daed40644992c238a0751b32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myConversation: {fileID: 0}
+  playerTag: Player
+  dialogoManager: {fileID: 234054559}
 --- !u!1 &2121131196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2071,6 @@ SceneRoots:
   - {fileID: 1173625589}
   - {fileID: 2121131200}
   - {fileID: 797764936}
-  - {fileID: 234054560}
   - {fileID: 926701172}
   - {fileID: 31074421}
+  - {fileID: 234054560}
