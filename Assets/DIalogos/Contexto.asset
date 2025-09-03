@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Contexto
+  m_EditorClassIdentifier: Assembly-CSharp::ConversationTemplate
+  conversationLines:
+  - speakerName: Bob
+    dialogueLine: "Hola h\xE9roe. \xBFTienes un momento? Quiero contarte algo muy
+      importante sobre el r\xEDo Mel\xE9ndez, que atraviesa nuestra ciudad, Cali."
+  - speakerName: Heroe
+    dialogueLine: "Claro, diez centavos. \xBFQu\xE9 sucede con el r\xEDo?"
+  - speakerName: Bob
+    dialogueLine: "El r\xEDo Mel\xE9ndez ha sido parte fundamental de nuestra historia
+      y desarrollo. Durante generaciones, nos ha dado agua, vida y alimento. Era
+      un s\xEDmbolo de vida para nuestra gente."
+  - speakerName: Heroe
+    dialogueLine: "Sue\xF1a incre\xEDble. Pero, \xBFqu\xE9 problema hay entonces?"
+  - speakerName: Bob
+    dialogueLine: "Con el crecimiento de la ciudad, la contaminaci\xF3n ha aumentado
+      mucho. El r\xEDo est\xE1 sufriendo por desechos industriales, basura y la falta
+      de cuidado. Si no hacemos algo pronto, podr\xEDa morir."
+  - speakerName: Heroe
+    dialogueLine: "\xBFY qu\xE9 pasar\xEDa si el r\xEDo muere?"
+  - speakerName: Bob
+    dialogueLine: "Ser\xEDa una tragedia. Perder\xEDamos un recurso vital. Esto afectar\xE1
+      la salud de las personas, reducir\xE1 la biodiversidad y traer\xE1 sequ\xEDas
+      y problemas para las futuras generaciones."
+  - speakerName: Heroe
+    dialogueLine: "\xBFEntonces qu\xE9 podemos hacer?"
+  - speakerName: Bob
+    dialogueLine: "Necesitamos conciencia y acci\xF3n, h\xE9roe. Protege el r\xEDo,
+      educa a otros y participa en la limpieza y cuidado. El futuro de Cali depende
+      de todos nosotros, pero especialmente de quienes, como t\xFA, pueden hacer
+      la diferencia."
+  - speakerName: Heroe
+    dialogueLine: "Entiendo. Cuenten conmigo para salvar el r\xEDo Mel\xE9ndez."
