@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationLines:
   - speakerName: Ema
-    dialogueLine: "\xA1Hola, h\xE9roe! Justo llegas cuando m\xE1s se te necesita."
+    dialogueLine: "\xA1Hola, h\xE9roe! Justo llegas cuando m\xE1s se te necesito."
   - speakerName: Heroe
     dialogueLine: "\xBFSucede algo malo?"
   - speakerName: Ema

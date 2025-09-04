@@ -75,7 +75,6 @@ public class LecturaPFV : MonoBehaviour
         {
             panelTerminarFV.SetActive(true);
 
-            ResultadoJuego.MostrarResultadoFinal();
         }
     }
         public void InvalidarRespuesta()
@@ -83,6 +82,7 @@ public class LecturaPFV : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(false); // ← Siempre false
         Debug.Log("Tiempo fuera Incorrecta");
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
     public void validarRespuesta(bool respuestaUsuario)
     {
@@ -99,5 +99,6 @@ public class LecturaPFV : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(esCorrecta);
         Debug.Log("Resultado final registrado: " + (esCorrecta ? "Correcta" : "Incorrecta"));
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
 }

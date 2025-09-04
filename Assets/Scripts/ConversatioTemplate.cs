@@ -1,27 +1,49 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPCDialogueTrigger : MonoBehaviour
 {
     [Header("NPC Dialogue Settings")]
-    [SerializeField] ScriptableObject myConversation; // Cambiar a ScriptableObject genérico
+    [SerializeField] ScriptableObject myConversation; // Conversación de este NPC
     [SerializeField] string playerTag = "Player";
-    [SerializeField] DialogoManager dialogoManager; // Referencia al DialogoManager
+
+    [Header("Asignar en el Inspector")]
+    [SerializeField] DialogoManager dialogoManager;   // Referencia al DialogoManager global
+    [SerializeField] bool cargaEscena = false;        // ¿Este NPC carga una escena?
+    [SerializeField] string nombreEscenaACargar;      // Nombre de la escena a cargar
 
     void Start()
     {
-        // Si no se asignó manualmente, buscar el DialogoManager en la escena
         if (dialogoManager == null)
         {
             dialogoManager = FindObjectOfType<DialogoManager>();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void StartDialogue()
     {
-        // Verificar si es el jugador y si existe el DialogoManager
-        if (other.CompareTag(playerTag) && dialogoManager != null)
+        if (dialogoManager != null)
         {
             dialogoManager.StartConversation(myConversation);
+
+            if (cargaEscena && !string.IsNullOrEmpty(nombreEscenaACargar))
+            {
+                dialogoManager.onConversationEnd.AddListener(CargarEscena);
+            }
+        }
+    }
+
+    void CargarEscena()
+    {
+        SceneManager.LoadScene(nombreEscenaACargar);
+        dialogoManager.onConversationEnd.RemoveListener(CargarEscena);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(playerTag))
+        {
+            StartDialogue(); 
         }
     }
 }

@@ -83,6 +83,7 @@ public class LecturaPAbiertas : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(false); // ← Siempre false
         Debug.Log("Respuesta invalidada - Incorrecta");
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
 
     public void ValidarRespuesta()
@@ -90,6 +91,7 @@ public class LecturaPAbiertas : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(true); // ← Siempre true
         Debug.Log("Respuesta validada - Correcta");
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
 
     public void VerificarRespuesta()
@@ -100,5 +102,6 @@ public class LecturaPAbiertas : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(esCorrecta); // ← true o false según comparación
         Debug.Log("Respuesta verificada: " + (esCorrecta ? "Correcta" : "Incorrecta"));
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
 }

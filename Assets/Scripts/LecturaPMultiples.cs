@@ -93,6 +93,7 @@ public class LecturaPMultiples : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(false); // ← Siempre false
         Debug.Log("Respuesta invalidada - Incorrecta");
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
     public void validarRespuesta(TextMeshProUGUI opcionLabel)
     {
@@ -105,5 +106,6 @@ public class LecturaPMultiples : MonoBehaviour
         ResultadoJuego.RegistrarRespuesta(esCorrecta);
         Debug.Log("Respuesta del jugador: " + (esCorrecta ? "Correcta" : "Incorrecta"));
         FindObjectOfType<ControllerAllS>().SelectQuestionFaciles();
+        FindObjectOfType<ControllerAllS>().ActualizarSaludRio();
     }
 }

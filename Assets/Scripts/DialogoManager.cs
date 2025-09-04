@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class DialogoManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DialogoManager : MonoBehaviour
     bool dialogueIsActive = false;
     Coroutine dialogueCoroutine;
 
+    public UnityEvent onConversationEnd;
     void Start()
     {
         // Canvas y textos inician desactivados SIEMPRE
@@ -76,5 +78,7 @@ public class DialogoManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         lineText.text = "";
         nameText.text = "";
+
+        onConversationEnd?.Invoke();
     }
 }
