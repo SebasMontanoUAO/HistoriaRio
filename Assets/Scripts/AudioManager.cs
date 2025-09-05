@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip menuMusic;
     public AudioClip gameMusic;
     public AudioClip dangerMusic;
+    public AudioClip quizMusic;
 
     private void Awake()
     {
@@ -43,6 +44,10 @@ public class AudioManager : MonoBehaviour
         else if (scene.name == "MenuPrincipal")
         {
             PlayMusic(menuMusic); // Música tranquila de menú
+        }
+        else if(scene.name == "Preguntados")
+        {
+            PlayMusic(quizMusic);
         }
     }
 
