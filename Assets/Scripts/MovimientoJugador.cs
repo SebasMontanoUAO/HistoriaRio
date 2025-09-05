@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MovimientoJugador : MonoBehaviour
 {
@@ -10,8 +10,11 @@ public class MovimientoJugador : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    // Variable para controlar la dirección del sprite
+    // Variable para controlar la direcciÃ³n del sprite
     private bool mirandoDerecha = true;
+
+    // NUEVO: flag para bloquear movimiento (cuando hay diÃ¡logo)
+    private bool puedeMoverse = true;
 
     void Start()
     {
@@ -22,6 +25,13 @@ public class MovimientoJugador : MonoBehaviour
 
     void Update()
     {
+        if (!puedeMoverse)
+        {
+            // Cancelar input
+            direccion = Vector2.zero;
+            return;
+        }
+
         ObtenerInput();
         if (Input.GetKeyDown(KeyCode.E) && interactuableActual != null)
         {
@@ -45,27 +55,31 @@ public class MovimientoJugador : MonoBehaviour
 
     private void Movimiento()
     {
-        rb.linearVelocity = new Vector2(direccion.x * velocidad, direccion.y * velocidad);
+        if (puedeMoverse)
+        {
+            rb.linearVelocity = new Vector2(direccion.x * velocidad, direccion.y * velocidad);
+        }
+        else
+        {
+            // Importante: detener el Rigidbody para que no se deslice
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     private void ActualizarAnimacion()
     {
-        // Si no hay movimiento, resetear ambos parámetros
-        if (direccion.magnitude < 0.01f)
+        if (direccion.magnitude < 0.01f || !puedeMoverse)
         {
             animator.SetFloat("Speed", 0f);
             animator.SetFloat("Vertical", 0f);
             return;
         }
 
-        // Determinar la dirección predominante para las animaciones
         if (Mathf.Abs(direccion.x) > Mathf.Abs(direccion.y))
         {
-            // Movimiento horizontal predominante
             animator.SetFloat("Speed", Mathf.Abs(direccion.x));
             animator.SetFloat("Vertical", 0f);
 
-            // Manejar el volteo del sprite solo en movimiento horizontal
             if (direccion.x > 0 && mirandoDerecha)
             {
                 Voltear();
@@ -77,7 +91,6 @@ public class MovimientoJugador : MonoBehaviour
         }
         else
         {
-            // Movimiento vertical predominante
             animator.SetFloat("Speed", 0f);
             animator.SetFloat("Vertical", direccion.y);
         }
@@ -85,20 +98,24 @@ public class MovimientoJugador : MonoBehaviour
 
     private void Voltear()
     {
-        // Cambiar la dirección
         mirandoDerecha = !mirandoDerecha;
-
-        // Voltear el sprite usando flipX
         spriteRenderer.flipX = !mirandoDerecha;
-
-        // Alternativa: Voltear usando la escala (descomenta si prefieres este método)
-        // Vector3 escala = transform.localScale;
-        // escala.x *= -1;
-        // transform.localScale = escala;
     }
 
     internal void SetInteractuable(Interactuable nuevoInteractuable)
     {
         interactuableActual = nuevoInteractuable;
+    }
+
+    // ðŸ”‘ NUEVOS MÃ‰TODOS
+    public void BloquearMovimiento()
+    {
+        puedeMoverse = false;
+        rb.linearVelocity = Vector2.zero; // detener por completo
+    }
+
+    public void DesbloquearMovimiento()
+    {
+        puedeMoverse = true;
     }
 }

@@ -13,12 +13,20 @@ MonoBehaviour:
   m_Name: Chica_Linda
   m_EditorClassIdentifier: 
   conversationLines:
-  - speakerName: Vanessa
-    dialogueLine: Hola, chico lindo.
+  - speakerName: Rosa
+    dialogueLine: Hola, muchacho
   - speakerName: Heroe
-    dialogueLine: "Hola \xBFQui\xE9n eres?"
-  - speakerName: Vanessa
-    dialogueLine: Vanessa una chica de el pueblo, recuerdo cuando el rio estaba limpio
-      y lindo, por favor ayudanos a recuperarlo.
+    dialogueLine: "Do\xF1a Rosa, \xBFsiempre el r\xEDo Mel\xE9ndez fue tan diferente
+      a como lo vemos hoy?"
+  - speakerName: Rosa
+    dialogueLine: "Ay mijo, no\u2026 hace a\xF1os sus aguas eran cristalinas, hasta
+      los ni\xF1os jugaban sin miedo. El r\xEDo era como la alegr\xEDa del barrio,
+      un patrimonio natural y social que nos daba identidad.."
   - speakerName: Heroe
-    dialogueLine: "Asi ser\xE1."
+    dialogueLine: "\xBFY en qu\xE9 momento se perdi\xF3 todo eso?"
+  - speakerName: Rosa
+    dialogueLine: "Con el crecimiento de la ciudad llegaron las conexiones ilegales,
+      las basuras, y poco a poco lo fuimos descuidando. Y lo m\xE1s triste es que
+      muchos creen que ya no hay nada que hacer, que \u201Cel r\xEDo est\xE1 perdido\u201D."
+  - speakerName: Rosa
+    dialogueLine: "Pero se equivocan\u2026 siempre se puede mejorar."

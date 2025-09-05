@@ -1,7 +1,8 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class DialogoManager : MonoBehaviour
 {
@@ -10,41 +11,39 @@ public class DialogoManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI lineText;
     [SerializeField] GameObject dialoguePanel;
 
-    bool dialogueIsActive = false;
-    Coroutine dialogueCoroutine;
+    [Header("Control del Jugador")]
+    public MovimientoJugador playerMovementScript; // 🔥 referencia al script de movimiento
+
+    private bool dialogueIsActive = false;
+    private Coroutine dialogueCoroutine;
 
     public UnityEvent onConversationEnd;
+
     void Start()
     {
-        // Canvas y textos inician desactivados SIEMPRE
         if (dialoguePanel != null)
-        {
             dialoguePanel.SetActive(false);
-        }
 
-        // Limpiar textos al inicio
-        if (nameText != null)
-        {
-            nameText.text = "";
-        }
-        if (lineText != null)
-        {
-            lineText.text = "";
-        }
+        if (nameText != null) nameText.text = "";
+        if (lineText != null) lineText.text = "";
     }
 
-    public void StartConversation(ScriptableObject conversation)
+    public void StartConversation(ScriptableObject conversation, System.Action onEnd = null)
     {
         if (conversation == null || dialogueIsActive) return;
 
         dialogueIsActive = true;
         dialoguePanel.SetActive(true);
 
+        // 🔒 Bloquea movimiento del jugador correctamente
+        if (playerMovementScript != null)
+            playerMovementScript.BloquearMovimiento();
+
         if (dialogueCoroutine != null) StopCoroutine(dialogueCoroutine);
-        dialogueCoroutine = StartCoroutine(PlayConversation(conversation));
+        dialogueCoroutine = StartCoroutine(PlayConversation(conversation, onEnd));
     }
 
-    IEnumerator PlayConversation(ScriptableObject conversation)
+    IEnumerator PlayConversation(ScriptableObject conversation, System.Action onEnd)
     {
         var field = conversation.GetType().GetField("conversationLines");
         if (field != null)
@@ -69,16 +68,21 @@ public class DialogoManager : MonoBehaviour
             }
         }
 
-        EndConversation();
+        EndConversation(onEnd);
     }
 
-    void EndConversation()
+    void EndConversation(System.Action onEnd)
     {
         dialogueIsActive = false;
         dialoguePanel.SetActive(false);
         lineText.text = "";
         nameText.text = "";
 
+        // 🔓 Reactiva movimiento del jugador correctamente
+        if (playerMovementScript != null)
+            playerMovementScript.DesbloquearMovimiento();
+
         onConversationEnd?.Invoke();
+        onEnd?.Invoke();
     }
 }
