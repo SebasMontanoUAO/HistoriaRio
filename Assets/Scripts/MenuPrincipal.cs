@@ -4,16 +4,25 @@ using UnityEngine.SceneManagement;
 public class MenuPrincipal : MonoBehaviour
 {
     [Header("Paneles")]
-    public GameObject panelMenu;      
+    public GameObject panelMenu;
     public GameObject panelControles;
+
     void Start()
     {
         panelMenu.SetActive(true);
         panelControles.SetActive(false);
+
+        // Reproduce la música del menú
+        AudioManager.instance.PlayMusic(AudioManager.instance.menuMusic);
     }
+
     public void Jugar()
     {
+        // Cambia a la escena de juego
         SceneManager.LoadScene("MovimientoJugador");
+
+        // Cambia la música a la del juego
+        AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
     }
 
     public void Salir()
@@ -21,7 +30,6 @@ public class MenuPrincipal : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
-
 
     public void AbrirControles()
     {
